@@ -1,0 +1,14 @@
+# Use our custom-configured c++ toolchain.
+
+build:cusconfig --crosstool_top=//toolchain:custoolchain
+
+# Use --cpu as a differentiator.
+
+build:cusconfig --cpu=cusconfig
+
+build:cusconfig --symlink_prefix=stage/
+
+# Use the default Bazel C++ toolchain to build the tools used during the
+# build.
+
+build:cusconfig --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
